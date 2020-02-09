@@ -16,19 +16,12 @@ import {
 import styles from './styles';
 import {StackActions} from 'react-navigation';
 
-export default class Laporscreen extends Component {
+export default class Feedbackscreen extends Component {
   _back = () => {
     const popAction = StackActions.pop({
       n: 1,
     });
     this.props.navigation.dispatch(popAction);
-  };
-
-  _pickImg = () => {
-    const pushAction = StackActions.push({
-      routeName: 'Imgpick',
-    });
-    this.props.navigation.dispatch(pushAction);
   };
 
   render() {
@@ -41,19 +34,22 @@ export default class Laporscreen extends Component {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.title}>Laporkan Masalah</Title>
+            <Title style={styles.title}>Kritik & Saran</Title>
           </Body>
         </Header>
         <Content>
           <Form>
-            <Button style={styles.upload} onPress={this._pickImg}>
-              <Icon name="camera" />
-            </Button>
             <Input placeholder="Ruangan" style={styles.input1} />
             <Textarea
               rowSpan={5}
               bordered
-              placeholder="Keterangan"
+              placeholder="Kritik"
+              style={styles.upload}
+            />
+            <Textarea
+              rowSpan={5}
+              bordered
+              placeholder="Saran"
               style={styles.input2}
             />
             <Button block style={styles.button} onPress={this._back}>

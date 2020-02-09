@@ -13,18 +13,28 @@ import {
   View,
 } from 'native-base';
 import {Image} from 'react-native';
-import {SwitchActions, StackActions} from 'react-navigation';
+import {StackActions} from 'react-navigation';
 import IMAGES from '../../configs/images';
 import styles from './styles';
 
 export default class Homescreen extends Component {
-  _logout = () => {
-    this.props.navigation.dispatch(SwitchActions.jumpTo({routeName: 'Login'}));
-  };
-
   _lapor = () => {
     const pushAction = StackActions.push({
       routeName: 'Lapor',
+    });
+    this.props.navigation.dispatch(pushAction);
+  };
+
+  _kritikSaran = () => {
+    const pushAction = StackActions.push({
+      routeName: 'Feedback',
+    });
+    this.props.navigation.dispatch(pushAction);
+  };
+
+  _profile = () => {
+    const pushAction = StackActions.push({
+      routeName: 'Profile',
     });
     this.props.navigation.dispatch(pushAction);
   };
@@ -47,7 +57,7 @@ export default class Homescreen extends Component {
                 <Image source={IMAGES.option1} style={styles.option1} />
               </View>
             </Button>
-            <Button style={styles.button}>
+            <Button style={styles.button} onPress={this._kritikSaran}>
               <View>
                 <Text style={styles.optionLabel2}>Kritik & Saran</Text>
                 <Image source={IMAGES.option2} style={styles.option2} />
